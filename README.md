@@ -8,8 +8,6 @@
 
 # Queue
 
-### A simple system for queuing large numbers of emails and sending them at a reasonable rate!
-
 Here lies a simple queue designed to hold a large number of emails, and slowly run through them, executing them one by
 one in a sensible order in a sensible time.
 
@@ -83,7 +81,7 @@ Content-Type: application/json
   "last_join": "12 minutes ago",
   "last_join_timestamp": 1420471999,
   "last_sent": "1 minute ago",
-  "last_sent_timestamp": 1420472648
+  "last_sent_timestamp": 1420472648,
   "sent_today": 2701,
   "sent_yesterday": 11721
 }
@@ -108,6 +106,13 @@ An example `handler` is `postmark`. Postmark offer a simple API to assist in sen
 online documentation](http://developer.postmarkapp.com/developer-api-email.html) details how their API receives JSON-
 encoded POST data and send the email onwards! In this case, the `postmark` handler would simply need to send the `data`
 in a POST request to Postmark's API, handling all authentication and errors.
+
+### Configuration
+
+Check out [example `ini` file](./config.example.ini) to see how an `ini` file should be laid out for this project. The
+queue should look for a `config.production.ini` file, and then fall back to a `config.ini` file. This fall-back allows
+us to commit an example / losely working `config.ini` to our repository, and override it with production-ready value
+upon deployment.
 
 ### Development
 
