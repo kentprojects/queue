@@ -119,6 +119,23 @@ upon deployment.
 This queue system can be written in any server-side language required, as it will run on it's own independent server
 that will require configuring either way. You should use `vagrant` to test the queue.
 
+### Priority
+
+This queue system should have a concept of priority, so if a `POST` request comes in similar to:
+
+```json
+{
+  "handler": "postmark",
+  "data": {
+    ...
+  },
+  "priority": 1
+}
+```
+
+The `priority` field should be able to push items to the top of the queue, ensuring the fast execution of these items
+above anything else in that handler's queue.
+
 ### Shutdown
 
 Ideally, the queue should be able to maintain it's state during shutdown / reboot operations, for example if we deploy a
